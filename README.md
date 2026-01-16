@@ -11,7 +11,7 @@ An emacs-lisp library that provide function to removes annoying tracking paramet
 3. Add the following to your Emacs configuration:
 
 ```elisp
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path "~/.emacs.d/user-lisp/")
 (require 'url-clean)
 ```
 
