@@ -30,14 +30,14 @@ The main function `url-clean` takes a URL string and returns a cleaned URL with 
 
 ```
 
-The function returns `nil` for invalid URLs:
+The function returns the original string for invalid URLs:
 
 ```elisp
 (url-clean "not-a-valid-url")
-;; => nil
+;; => "not-a-valid-url"
 
 (url-clean "")
-;; => nil
+;; => ""
 ```
 
 ## Customization

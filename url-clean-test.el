@@ -204,12 +204,14 @@
                    "https://example.com#section")))
 
 (ert-deftest url-clean-test/invalid-url ()
-  "Test invalid URL returns nil."
-  (should (null (url-clean "not-a-valid-url"))))
+  "Test invalid URL returns original string."
+  (should (string= (url-clean "not-a-valid-url")
+                   "not-a-valid-url")))
 
 (ert-deftest url-clean-test/empty-string ()
-  "Test empty string returns nil."
-  (should (null (url-clean ""))))
+  "Test empty string returns original string."
+  (should (string= (url-clean "")
+                   "")))
 
 (ert-deftest url-clean-test/preserves-protocol ()
   "Test that the protocol is preserved."

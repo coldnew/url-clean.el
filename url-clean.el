@@ -56,33 +56,34 @@
 
 (defun url-clean (url)
   "Remove tracking parameters from URL.
-Returns cleaned URL string, or nil if URL is invalid."
+Returns cleaned URL string, or original URL string if URL is invalid."
   (let ((parsed (url-generic-parse-url url)))
-    (when (and parsed (aref parsed 1) ; scheme (index 1)
-               (not (string-empty-p url)))
-      (let* ((full-filename (aref parsed 6))
-             (parts (if (string-match "\\?" full-filename)
-                        (split-string full-filename "\\?")
-                      (list full-filename)))
-             (filename (car parts))
-             (query-string (cadr parts))
-             (query-alist (when query-string
-                            (url-parse-query-string query-string)))
-             (filtered-query (delq nil
-                                   (mapcar (lambda (pair)
-                                             (let ((param (car pair)))
-                                               (unless (or (member param url-clean-parameters)
-                                                           (cl-some (lambda (p)
-                                                                      (string-prefix-p p param))
-                                                                    url-clean-parameters))
-                                                 pair)))
-                                           query-alist)))
-             (new-query-string (when filtered-query
-                                 (url-build-query-string filtered-query))))
-        (setf (aref parsed 6) (if new-query-string
-                                  (concat filename "?" new-query-string)
-                                filename))
-        (url-recreate-url parsed)))))
+    (if (and parsed (aref parsed 1) ; scheme (index 1)
+             (not (string-empty-p url)))
+        (let* ((full-filename (aref parsed 6))
+               (parts (if (string-match "\\?" full-filename)
+                          (split-string full-filename "\\?")
+                        (list full-filename)))
+               (filename (car parts))
+               (query-string (cadr parts))
+               (query-alist (when query-string
+                              (url-parse-query-string query-string)))
+               (filtered-query (delq nil
+                                     (mapcar (lambda (pair)
+                                               (let ((param (car pair)))
+                                                 (unless (or (member param url-clean-parameters)
+                                                             (cl-some (lambda (p)
+                                                                        (string-prefix-p p param))
+                                                                      url-clean-parameters))
+                                                   pair)))
+                                             query-alist)))
+               (new-query-string (when filtered-query
+                                   (url-build-query-string filtered-query))))
+          (setf (aref parsed 6) (if new-query-string
+                                    (concat filename "?" new-query-string)
+                                  filename))
+          (url-recreate-url parsed))
+      url)))
 
 (provide 'url-clean)
 ;;; url-clean.el ends here
