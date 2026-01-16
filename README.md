@@ -1,8 +1,10 @@
+<a href="http://github.com/coldnew/url-clean.el"><img src="https://www.gnu.org/software/emacs/images/emacs.png" alt="Emacs Logo" width="80" height="80" align="right"></a>
 # url-clean
 
-[![CI](https://github.com/coldnew/url-clean/workflows/CI/badge.svg)](https://github.com/coldnew/url-clean/actions)
-
 An emacs-lisp library that provide function to removes annoying tracking parameters from URLs.
+
+[![CI](https://github.com/coldnew/url-clean/workflows/CI/badge.svg)](https://github.com/coldnew/url-clean/actions)
+[![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 
 ## Installation
 
