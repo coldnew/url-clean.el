@@ -3,7 +3,7 @@
 
 An emacs-lisp library that provide function to removes annoying tracking parameters from URLs.
 
-[![CI](https://github.com/coldnew/url-clean/workflows/CI/badge.svg)](https://github.com/coldnew/url-clean/actions)
+[![CI](https://github.com/coldnew/url-clean.el/actions/workflows/main.yml/badge.svg)](https://github.com/coldnew/url-clean.el/actions/workflows/main.yml)
 [![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 
 ## Installation
